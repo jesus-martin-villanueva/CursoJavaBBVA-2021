@@ -4,12 +4,16 @@ public class Cuadrado extends Figura {
 	
 	private float lado;
 	
-	public Cuadrado() {	super();}
+	public Cuadrado() {	
+		super();
+	}
 	
-	public Cuadrado(String pNombre) { super(pNombre); }
+	public Cuadrado(String nombre) { 
+		super(nombre); 
+	}
 	
-	public Cuadrado(String pNombre, float lado) {
-		super(pNombre);
+	public Cuadrado(String nombre, float lado) {
+		super(nombre);
 		this.lado = lado;
 	}
 

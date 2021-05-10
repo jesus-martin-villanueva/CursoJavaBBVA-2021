@@ -13,6 +13,13 @@ public class PoligonoRegular extends Figura {
 	public PoligonoRegular(String nombre) {
 		super(nombre);
 	}
+	
+	public PoligonoRegular(String nombre, float apotema, int lado, int cantidadLados) {
+		super(nombre);
+		this.apotema = apotema;
+		this.lado = lado;
+		this.cantidadDeLados = cantidadLados;
+	}
 
 	@Override
 	public float calcularPerimetro() {
