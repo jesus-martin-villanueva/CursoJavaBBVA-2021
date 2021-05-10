@@ -14,7 +14,7 @@ public abstract class Figura implements Model { //Clase abstract es que no se in
 		this.nombre = nombre;
 	}
 	
-	//Métodos
+	//Métodos de negocio
 	public abstract float calcularPerimetro();
 	public abstract float calcularSuperficie();
 	public abstract String getValores();
@@ -29,14 +29,14 @@ public abstract class Figura implements Model { //Clase abstract es que no se in
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	//hashCode, equals, toString
+	
+	//equals, hashCode, toString
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -60,5 +60,10 @@ public abstract class Figura implements Model { //Clase abstract es que no se in
 		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Figura [nombre=" + nombre + "]";
 	}
 }
