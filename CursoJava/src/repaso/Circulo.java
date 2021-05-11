@@ -28,7 +28,7 @@ public class Circulo extends Figura { //Hereda de la clase Figura y está obligad
 
 	@Override
 	public String getValores() {
-		return "Nombre: " + super.getNombre() + ", Radio: " + this.radio;
+		return "r=" + this.radio;
 	}
 	
 	//Getters y Setters

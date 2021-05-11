@@ -1,0 +1,5 @@
+"{'Tipo':'1', 'nombre':'cuad1', 'valores':'l=10.0'},
+"{'Tipo':'2', 'nombre':'circ1', 'valores':'r=10.0'},
+"{'Tipo':'3', 'nombre':'rect1', 'valores':'h=10, b=5'},
+"{'Tipo':'4', 'nombre':'tria1', 'valores':'h=3.0, b=4.0'},
+"{'Tipo':'5', 'nombre':'poli1', 'valores':'a=4.0, l=6, cl=5'}

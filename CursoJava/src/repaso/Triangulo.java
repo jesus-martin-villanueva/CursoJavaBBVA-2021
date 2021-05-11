@@ -35,7 +35,7 @@ public class Triangulo extends Figura {
 
 	@Override
 	public String getValores() {
-		return "Nombre: " + super.getNombre() + ", Altura: " + this.altura + ", Base: " + this.base;
+		return "h=" + this.altura + ", b=" + this.base;
 	}
 
 	//Getters y Setters
