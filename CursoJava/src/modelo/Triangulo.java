@@ -1,41 +1,44 @@
-package repaso;
+package modelo;
 
-public class Rectangulo extends Figura {
+public class Triangulo extends Figura {
 	
+	//Campos
 	private float altura;
 	private float base;
 	
-	public Rectangulo() {
+	//Constructores
+	public Triangulo() {
 		super();
 	}
 
-	public Rectangulo(String nombre) {
+	public Triangulo(String nombre) {
 		super(nombre);
 	}
 	
-	public Rectangulo(String nombre, float altura, float base) {
+	public Triangulo(String nombre, float altura, float base) {
 		super(nombre);
 		this.altura = altura;
 		this.base = base;
 	}
 
+	//Métodos heredados
 	@Override
 	public float calcularPerimetro() {
-		return (base * 2) + (altura * 2);
+		int hipotenusa = (int)Math.sqrt(Math.pow(base, 2) + Math.pow(altura, 2));
+		return altura + base + hipotenusa;
 	}
 
 	@Override
 	public float calcularSuperficie() {
-		return base * altura;
+		return (this.base * this.altura) / 2;
 	}
 
 	@Override
 	public String getValores() {
-		StringBuilder sb = new StringBuilder("h=");
-		sb.append(altura + ", b=" + base);		
-		return sb.toString();
+		return "h=" + this.altura + ", b=" + this.base;
 	}
 
+	//Getters y Setters
 	public float getAltura() {
 		return altura;
 	}
@@ -51,7 +54,8 @@ public class Rectangulo extends Figura {
 	public void setBase(float base) {
 		this.base = base;
 	}
-
+	
+	//equals, hasCode, toString
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -69,7 +73,7 @@ public class Rectangulo extends Figura {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Rectangulo other = (Rectangulo) obj;
+		Triangulo other = (Triangulo) obj;
 		if (Float.floatToIntBits(altura) != Float.floatToIntBits(other.altura))
 			return false;
 		if (Float.floatToIntBits(base) != Float.floatToIntBits(other.base))
@@ -79,6 +83,6 @@ public class Rectangulo extends Figura {
 
 	@Override
 	public String toString() {
-		return "Rectangulo [altura=" + altura + ", base=" + base + "]";
+		return "Triangulo [altura=" + altura + ", base=" + base + "]";
 	}
 }

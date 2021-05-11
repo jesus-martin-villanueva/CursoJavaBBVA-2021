@@ -1,4 +1,4 @@
-package repaso;
+package modelo;
 
 public abstract class Figura implements Model { //Clase abstract es que no se instancia
 

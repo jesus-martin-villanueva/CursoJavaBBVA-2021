@@ -1,4 +1,4 @@
-package repaso.test;
+package modelo.test;
 
 import static org.junit.Assert.*;
 
@@ -8,12 +8,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import repaso.Circulo;
-import repaso.Cuadrado;
-import repaso.Figura;
-import repaso.PoligonoRegular;
-import repaso.Rectangulo;
-import repaso.Triangulo;
+import modelo.Circulo;
+import modelo.Cuadrado;
+import modelo.Figura;
+import modelo.PoligonoRegular;
+import modelo.Rectangulo;
+import modelo.Triangulo;
 
 public class FiguraTest {
 	

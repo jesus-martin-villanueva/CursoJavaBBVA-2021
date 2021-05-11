@@ -1,4 +1,4 @@
-package repaso;
+package modelo;
 
 public class Circulo extends Figura { //Hereda de la clase Figura y está obligado a implementar los métodos abstract de la clase
 

@@ -1,4 +1,4 @@
-package repaso;
+package modelo;
 
 public class PoligonoRegular extends Figura {
 	

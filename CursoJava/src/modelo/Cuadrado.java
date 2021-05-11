@@ -1,4 +1,4 @@
-package repaso;
+package modelo;
 
 public class Cuadrado extends Figura {
 	

@@ -6,17 +6,18 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import repaso.Circulo;
-import repaso.Cuadrado;
-import repaso.Figura;
-import repaso.PoligonoRegular;
-import repaso.Rectangulo;
-import repaso.Triangulo;
+import modelo.Circulo;
+import modelo.Cuadrado;
+import modelo.Figura;
+import modelo.PoligonoRegular;
+import modelo.Rectangulo;
+import modelo.Triangulo;
 
 public class FiguraFileUtil {
 
@@ -31,39 +32,28 @@ public class FiguraFileUtil {
 		this.path = path;
 	}
 	
-	public void generarArchivo() {
+	public void generarArchivo() throws IOException {
 		FileWriter fichero = null;
         PrintWriter pw = null;
         int tipo = 0;
-        //"C:\\repoBBVA_local\\CursoJavaBBVA-2021\\CursoJava\\src\\utils\\figuraFileUtilW.txt"
-        try
-        {
-            fichero = new FileWriter(this.path + this.nombreArchivo);
-            pw = new PrintWriter(fichero);
-            
-            for (Figura figura : figuras) {
-            	if (figura instanceof Cuadrado)
-            		tipo = 1;
-            	else if (figura instanceof Circulo)
-            		tipo = 2;
-            	else if (figura instanceof Rectangulo)
-            		tipo = 3;
-            	else if (figura instanceof Triangulo)
-            		tipo = 4;
-            	else if (figura instanceof PoligonoRegular)
-            		tipo = 5;
-            	pw.println("{'Tipo':'" + tipo + "', 'nombre':'" + figura.getNombre() + "', 'valores':'" + figura.getValores() + "'},");
-			}
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
-        }
+        
+        fichero = new FileWriter(this.path + this.nombreArchivo);
+        pw = new PrintWriter(fichero);
+        
+        for (Figura figura : figuras) {
+        	if (figura instanceof Cuadrado)
+        		tipo = 1;
+        	else if (figura instanceof Circulo)
+        		tipo = 2;
+        	else if (figura instanceof Rectangulo)
+        		tipo = 3;
+        	else if (figura instanceof Triangulo)
+        		tipo = 4;
+        	else if (figura instanceof PoligonoRegular)
+        		tipo = 5;
+        	pw.println("{'Tipo':'" + tipo + "', 'nombre':'" + figura.getNombre() + "', 'valores':'" + figura.getValores() + "'},");
+		}
+        fichero.close();
         System.out.println("Fichero generado correctamente.");
 	}
 	
@@ -104,7 +94,6 @@ public class FiguraFileUtil {
 	}
 	
 	public ArrayList<Figura> leerArchivo() {
-		//"C:\\repoBBVA_local\\CursoJavaBBVA-2021\\CursoJava\\src\\utils\\figuraFileUtilR.txt"
 		File archivo = null;
 	    FileReader fr = null;
 	    BufferedReader br = null;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package repaso;
+package modelo;
 
 /**
  * Esta interface permite y obliga a implementar los métodos que tiene
