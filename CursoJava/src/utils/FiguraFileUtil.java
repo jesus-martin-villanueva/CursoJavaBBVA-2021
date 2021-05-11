@@ -122,6 +122,9 @@ public class FiguraFileUtil {
 
 	        String linea;
 	        while((linea=br.readLine())!=null) {
+	        	//Eliminamos los caracteres innecesarios
+	        	linea = linea.replaceAll("[{}']*", "");
+	        	
 	        	camposRegistro = linea.split(",");
 	        	
 	        	//Obtengo los pares clave valor
@@ -130,19 +133,26 @@ public class FiguraFileUtil {
 	        		map.put(par[0], par[1]); //Tipo, 1 ... nombre, cuad1 ... valores, l=10.0
 	        	}
 	        	
-	        	switch(map.get("'Tipo'")) {
-	        	case "1": //Cuadrado "{'Tipo':'1', 'nombre':'cuad1', 'valores':'l=10.0'},
-	        		String valorCua = map.get("'valores'"); //l=10.0
+	        	switch(map.get("Tipo")) {
+	        	case "1": //Cuadrado {'Tipo':'1', 'nombre':'cuad1', 'valores':'l=10.0'},
+	        		String valorCua = map.get("valores"); //l=10.0
 	        		float lado = Float.parseFloat(valorCua.substring(2));
-	        		figuras.add(new Cuadrado(map.get("'nombre'"), lado));
+	        		figuras.add(new Cuadrado(map.get("nombre"), lado));
 	        		break;
-	        	case "2": //Circulo "{'Tipo':'2', 'nombre':'circ1', 'valores':'r=10.0'},
-	        		String valorCir = map.get("'valores'"); //r=10.0
+	        	case "2": //Circulo {'Tipo':'2', 'nombre':'circ1', 'valores':'r=10.0'}
+	        		String valorCir = map.get("valores"); //r=10.0
 	        		float radio = Float.parseFloat(valorCir.substring(2));
-	        		figuras.add(new Circulo(map.get("'nombre'"), radio));
+	        		figuras.add(new Circulo(map.get("nombre"), radio));
 	        		break;
-	        	case "3":
+	        	case "3": //Rectangulo {'Tipo':'3', 'nombre':'rect1', 'valores':'h=10, b=5'}
+	        		String valoresRec = map.get("valores"); 
 	        		
+	        		break;
+	        	case "4": //Triangulo {'Tipo':'4', 'nombre':'tria1', 'valores':'h=3.0, b=4.0'}
+	        		
+	        		break;
+	        	case "5": //Poligono Regular {'Tipo':'5', 'nombre':'poli1', 'valores':'a=4.0, l=6, cl=5'}
+	
 	        		break;
 	        	}
 	        		
@@ -154,11 +164,13 @@ public class FiguraFileUtil {
 	    	try{                    
 	    		if( null != fr ) {   
 	    			fr.close();     
-	            }                  
+	            }  
 	        } catch (Exception e2) { 
 	            e2.printStackTrace();
 	        }
 	    }
+	    
+	    return figuras;
 	}
 
 	public ArrayList<Figura> getFiguras() {
