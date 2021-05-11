@@ -114,7 +114,6 @@ public class FiguraFileUtil {
 	    ArrayList<Figura> figuras = new ArrayList<Figura>();
 	    Map<String, String> map = new HashMap<String, String>();
 	    String[] camposRegistro = null;
-	    //"{'Tipo':'1', 'nombre':'cuad1', 'valores':'l=10.0'},
 
 	    try {
 	        archivo = new File (path + nombreArchivo);
@@ -130,12 +129,14 @@ public class FiguraFileUtil {
 	        		map.put(par[0], par[1]); //Tipo, 1 ... nombre, cuad1 ... valores, l=10.0
 	        	}
 	        	switch(map.get("'Tipo'")) {
-	        	case "1":
-	        		//TODO: obtener los datos (l,etc)
-	        		float lado = 0;
+	        	case "1": //Cuadrado "{'Tipo':'1', 'nombre':'cuad1', 'valores':'l=10.0'},
+	        		String valor = map.get("'valores'"); //l=10.0
+	        		float lado = Float.parseFloat(valor.substring(2));
 	        		figuras.add(new Cuadrado(map.get("'nombre'"), lado));
 	        		break;
-	        	//Añadir otras figuras
+	        	case "2": //Circulo "{'Tipo':'2', 'nombre':'circ1', 'valores':'r=10.0'},
+	        		
+	        		break;
 	        	}
 	        }
 	    } catch(Exception e) {
