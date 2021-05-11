@@ -123,21 +123,30 @@ public class FiguraFileUtil {
 	        String linea;
 	        while((linea=br.readLine())!=null) {
 	        	camposRegistro = linea.split(",");
+	        	
 	        	//Obtengo los pares clave valor
 	        	for(int i = 0; i < camposRegistro.length; i++) {
 	        		String[] par = camposRegistro[i].split(":");
 	        		map.put(par[0], par[1]); //Tipo, 1 ... nombre, cuad1 ... valores, l=10.0
 	        	}
+	        	
 	        	switch(map.get("'Tipo'")) {
 	        	case "1": //Cuadrado "{'Tipo':'1', 'nombre':'cuad1', 'valores':'l=10.0'},
-	        		String valor = map.get("'valores'"); //l=10.0
-	        		float lado = Float.parseFloat(valor.substring(2));
+	        		String valorCua = map.get("'valores'"); //l=10.0
+	        		float lado = Float.parseFloat(valorCua.substring(2));
 	        		figuras.add(new Cuadrado(map.get("'nombre'"), lado));
 	        		break;
 	        	case "2": //Circulo "{'Tipo':'2', 'nombre':'circ1', 'valores':'r=10.0'},
+	        		String valorCir = map.get("'valores'"); //r=10.0
+	        		float radio = Float.parseFloat(valorCir.substring(2));
+	        		figuras.add(new Circulo(map.get("'nombre'"), radio));
+	        		break;
+	        	case "3":
 	        		
 	        		break;
 	        	}
+	        		
+	        	map.clear();
 	        }
 	    } catch(Exception e) {
 	    	e.printStackTrace();
