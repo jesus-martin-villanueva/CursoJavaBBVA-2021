@@ -31,16 +31,16 @@ public class FiguraTest {
 	public void setUp() throws Exception {
 	    cuadrado = new Cuadrado("cua1", 10);
 		circulo = new Circulo("cir1", 10f);
-		triangulo = new Triangulo("tri1", 10f, 10f);
-		rectangulo = new Rectangulo("rec1", 10, 10);
-		//poligonoRegular = new PoligonoRegular("pol1", );
+		triangulo = new Triangulo("tri1", 3f, 4f);
+		rectangulo = new Rectangulo("rec1", 10, 5);
+		poligonoRegular = new PoligonoRegular("pol1", 4f, 6, 5);
 		
 		figuras = new ArrayList<Figura>();
 		figuras.add(new Cuadrado("cua1", 10));
 		figuras.add(new Circulo("cir1", 10f));
-		figuras.add(new Triangulo("tri1", 10f, 10f));
-		figuras.add(new Rectangulo("rec1", 10, 10));
-		//figuras.add(new PoligonoRegular("pol1", ));
+		figuras.add(new Triangulo("tri1", 3f, 4f));
+		figuras.add(new Rectangulo("rec1", 10, 5));
+		figuras.add(new PoligonoRegular("pol1", 4f, 6, 5));
 	}
 
 	@After
@@ -90,28 +90,28 @@ public class FiguraTest {
 	@Test
 	public void testCalcularPerimetro_Circulo() {
 		//Resultado a esperar, método a probar, precisión
-		assertEquals(40, circulo.calcularPerimetro(), 0.1);
+		assertEquals(62.83185307, circulo.calcularPerimetro(), 0.1);
 	}
 		
 	@Test
 	public void testCalcularSuperficie_Circulo() {
-		assertEquals(100, circulo.calcularSuperficie(), 0.1);
+		assertEquals(314.1592654, circulo.calcularSuperficie(), 0.1);
 	}
 		
 	@Test
 	public void testGetValores_Circulo() {
-		assertEquals("l=10.0", circulo.getValores());
+		assertEquals("Nombre: cir1, Radio: 10.0", circulo.getValores());
 	}
 		
 	@Test
 	public void testGetNombre_Circulo() {
-		assertEquals("cua1", circulo.getNombre());
+		assertEquals("cir1", circulo.getNombre());
 	}
 	
 	@Test
 	public void testEqualsyHashCode_Circulo(){
-		Cuadrado cuaPrueba = new Cuadrado("cua1", 10);
-		assertTrue(figuras.contains(cuaPrueba));
+		Circulo cirPrueba = new Circulo("cir1", 10f);
+		assertTrue(figuras.contains(cirPrueba));
 	}
 		
 	//FIN CIRCULO
@@ -121,28 +121,28 @@ public class FiguraTest {
 	@Test
 	public void testCalcularPerimetro_Rectangulo() {
 		//Resultado a esperar, método a probar, precisión
-		assertEquals(40, rectangulo.calcularPerimetro(), 0.1);
+		assertEquals(30, rectangulo.calcularPerimetro(), 0.1);
 	}
 		
 	@Test
 	public void testCalcularSuperficie_Rectangulo() {
-		assertEquals(100, rectangulo.calcularSuperficie(), 0.1);
+		assertEquals(50, rectangulo.calcularSuperficie(), 0.1);
 	}
 		
 	@Test
 	public void testGetValores_Rectangulo() {
-		assertEquals("l=10.0", rectangulo.getValores());
+		assertEquals("h=10.0, b=5.0", rectangulo.getValores());
 	}
 		
 	@Test
 	public void testGetNombre_Rectangulo() {
-		assertEquals("cua1", rectangulo.getNombre());
+		assertEquals("rec1", rectangulo.getNombre());
 	}
 	
 	@Test
 	public void testEqualsyHashCode_Rectangulo(){
-		Cuadrado cuaPrueba = new Cuadrado("cua1", 10);
-		assertTrue(figuras.contains(cuaPrueba));
+		Rectangulo recPrueba = new Rectangulo("rec1", 10, 5);
+		assertTrue(figuras.contains(recPrueba));
 	}
 		
 	//FIN RECTANGULO
@@ -152,60 +152,60 @@ public class FiguraTest {
 	@Test
 	public void testCalcularPerimetro_Triangulo() {
 		//Resultado a esperar, método a probar, precisión
-		assertEquals(40, triangulo.calcularPerimetro(), 0.1);
+		assertEquals(12, triangulo.calcularPerimetro(), 0.1);
 	}
 		
 	@Test
 	public void testCalcularSuperficie_Triangulo() {
-		assertEquals(100, triangulo.calcularSuperficie(), 0.1);
+		assertEquals(6, triangulo.calcularSuperficie(), 0.1);
 	}
 		
 	@Test
 	public void testGetValores_Triangulo() {
-		assertEquals("l=10.0", triangulo.getValores());
+		assertEquals("Nombre: tri1, Altura: 3.0, Base: 4.0", triangulo.getValores());
 	}
 		
 	@Test
 	public void testGetNombre_Triangulo() {
-		assertEquals("cua1", triangulo.getNombre());
+		assertEquals("tri1", triangulo.getNombre());
 	}
 	
 	@Test
 	public void testEqualsyHashCode_Triangulo(){
-		Cuadrado cuaPrueba = new Cuadrado("cua1", 10);
-		assertTrue(figuras.contains(cuaPrueba));
+		Triangulo triPrueba = new Triangulo("tri1", 3f, 4f);
+		assertTrue(figuras.contains(triPrueba));
 	}
 		
 	//FIN TRIANGULO
 		
 	//POLIGONO REGULAR
 		
-	/*@Test
+	@Test
 	public void testCalcularPerimetro_PoligonoRegular() {
 		//Resultado a esperar, método a probar, precisión
-		assertEquals(40, poligonoRegular.calcularPerimetro(), 0.1);
+		assertEquals(30, poligonoRegular.calcularPerimetro(), 0.1);
 	}
 		
 	@Test
 	public void testCalcularSuperficie_PoligonoRegular() {
-		assertEquals(100, poligonoRegular.calcularSuperficie(), 0.1);
+		assertEquals(60, poligonoRegular.calcularSuperficie(), 0.1);
 	}
 		
 	@Test
 	public void testGetValores_PoligonoRegular() {
-		assertEquals("l=10.0", poligonoRegular.getValores());
+		assertEquals("Apotema=4.0, l=6,CantL=5", poligonoRegular.getValores());
 	}
 		
 	@Test
 	public void testGetNombre_PoligonoRegular() {
-		assertEquals("cua1", poligonoRegular.getNombre());
+		assertEquals("pol1", poligonoRegular.getNombre());
 	}
 	
 	@Test
 	public void testEqualsyHashCode_PoligonoRegular(){
-		PoligonoRegular polPrueba = new PoligonoRegular("cua1", 10);
+		PoligonoRegular polPrueba = new PoligonoRegular("pol1", 4f, 6, 5);
 		assertTrue(figuras.contains(polPrueba));
-	}*/
+	}
 		
 	//FIN POLIGONO REGULAR
 }
