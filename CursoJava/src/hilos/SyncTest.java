@@ -8,6 +8,7 @@ public class SyncTest {
 
     Producer p1 = new Producer(stack);
     Thread prodT1 = new Thread (p1);
+    //prodT1.setPriority(Thread.MAX_PRIORITY);
     prodT1.start();
 
     Producer p2 = new Producer(stack);
