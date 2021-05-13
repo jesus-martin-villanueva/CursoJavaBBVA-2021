@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body onload="checkscope()">
+<script type="text/javascript">
+	var myVar = "global"; //Global variable
+	function checkscope() {
+		var myVar = "local"; //Local variable
+		document.write(myVar);
+	}
+	alert(myVar);
+</script>
+</body>
+</html>
