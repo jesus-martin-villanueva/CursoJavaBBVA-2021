@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	function cargarSelectFigurasYPintarFecha() {
+		//Pintamos fecha actual
+		var today = new Date();
+		var f = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+		document.getElementById("FechaActual").innerHTML = f;
+		
+		var figurasTipo = new Array(1, 2, 3, 4, 5);
+		var selectFiguras = document.getElementById("figurasS");
+		var opcionVacia = document.createElement("option");
+		opcionVacia.text = "";
+		opcionVacia.value = "";
+		selectFiguras.appendChild(opcionVacia);
+		for(indice in figurasTipo) {
+			var optionS = document.createElement("option");
+			optionS.value = figurasTipo[indice];
+			
+			switch (figurasTipo[indice]) {
+				case 1: optionS.text = "Cuadrado";
+					  	break;
+				case 2: optionS.text = "Círculo";
+					  	break;
+				case 3: optionS.text = "Rectángulo";
+					  	break;
+				case 4: optionS.text = "Triángulo";
+					  	break;
+				case 5: optionS.text = "Polígono Regular";
+					  	break;
+			}
+			selectFiguras.appendChild(optionS);
+		}
+	}
+	
+	function cambiarCampos() {
+		var opcionSeleccionada = document.getElementById("figurasS").value;
+		switch(opcionSeleccionada) {
+			case "1": //Cuadrado
+				document.getElementById("nombreTr").style.display = "table-row";
+				document.getElementById("tipoTr").style.display = "table-row";
+				document.getElementById("ladoTr").style.display = "table-row";
+				document.getElementById("radioTr").style.display = "none";
+				document.getElementById("baseTr").style.display = "none";
+				document.getElementById("alturaTr").style.display = "none";
+				document.getElementById("apotemaTr").style.display = "none";
+				document.getElementById("numLadosTr").style.display = "none";
+				break;
+			case "2": //Circulo
+				document.getElementById("nombreTr").style.display = "table-row";
+				document.getElementById("tipoTr").style.display = "table-row";
+				document.getElementById("ladoTr").style.display = "none";
+				document.getElementById("radioTr").style.display = "table-row";
+				document.getElementById("baseTr").style.display = "none";
+				document.getElementById("alturaTr").style.display = "none";
+				document.getElementById("apotemaTr").style.display = "none";
+				document.getElementById("numLadosTr").style.display = "none";
+				break;
+			case "3": //Rectangulo
+			case "4": //Triángulo
+				document.getElementById("nombreTr").style.display = "table-row";
+				document.getElementById("tipoTr").style.display = "table-row";
+				document.getElementById("ladoTr").style.display = "none";
+				document.getElementById("radioTr").style.display = "none";
+				document.getElementById("baseTr").style.display = "table-row";
+				document.getElementById("alturaTr").style.display = "table-row";
+				document.getElementById("apotemaTr").style.display = "none";
+				document.getElementById("numLadosTr").style.display = "none";
+				break;
+			case "5": //Polígono Regular
+				document.getElementById("nombreTr").style.display = "table-row";
+				document.getElementById("tipoTr").style.display = "table-row";
+				document.getElementById("ladoTr").style.display = "table-row";
+				document.getElementById("radioTr").style.display = "none";
+				document.getElementById("baseTr").style.display = "none";
+				document.getElementById("alturaTr").style.display = "none";
+				document.getElementById("apotemaTr").style.display = "table-row";
+				document.getElementById("numLadosTr").style.display = "table-row";
+				break;
+			default:
+				document.getElementById("nombreTr").style.display = "none";
+				document.getElementById("tipoTr").style.display = "none";
+				document.getElementById("ladoTr").style.display = "none";
+				document.getElementById("radioTr").style.display = "none";
+				document.getElementById("baseTr").style.display = "none";
+				document.getElementById("alturaTr").style.display = "none";
+				document.getElementById("apotemaTr").style.display = "none";
+				document.getElementById("numLadosTr").style.display = "none";
+				break;
+		}
+	}
+	
+	function validarVacio() {
+		var opcionSeleccionada = document.getElementById("figurasS").value;
+		var sw = false;
+		if((document.getElementById("nombre").value != "") && 
+				   (document.getElementById("tipo").value != "")) {
+			switch(opcionSeleccionada) {
+				case "1": //Cuadrado
+					if((document.getElementById("lado").value == ""))
+						sw = true;
+					break;
+				case "2": //Circulo
+					if((document.getElementById("radio").value == ""))
+						sw = true;
+					break;
+				case "3": //Rectangulo
+				case "4": //Triángulo
+					if((document.getElementById("base").value == "") ||
+				   	   (document.getElementById("altura").value == ""))
+						sw = true;
+					break;
+				case "5": //Polígono Regular
+					if((document.getElementById("apotema").value == "") ||
+				   	   (document.getElementById("numLados").value == "") || 
+				   	   (document.getElementById("lado").value == ""))
+						sw = true;
+					break;
+			}
+		} else {
+			sw = true;
+		}
+		if(sw == true) {
+			alert("¡Los campos no pueden estar vacíos!");
+		}
+	}
+	
+</script>
+</head>
+<body onload="cargarSelectFigurasYPintarFecha(); cambiarCampos()">
+
+<div class="container">
+<br />
+  <label id="FechaActual" style="float:right;"></label>
+  <h2>FIGURAS</h2>
+  <p>Selecciona una figura y agrega los campos requeridos:</p>  
+  <br/>
+  <select name="figuras" id="figurasS" onchange="cambiarCampos()" style="float:left;"></select>
+  <input type="button" onclick="validarVacio()" id="Submit" style="float:right;" value="Submit"/>
+  <br/>  
+  <br />        
+  <table class="table" id="tabla">
+    <thead>
+      <tr>
+        <th>Campos</th>
+        <th>Datos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="nombreTr">
+        <td>Nombre</td>
+        <td><input type="text" id="nombre" name="nombre" /></td>
+      </tr>
+      <tr id="tipoTr">
+        <td>Tipo</td>
+        <td><input type="text" id="tipo" name="tipo" /></td>
+      </tr>
+      <tr id="ladoTr">
+        <td>Lado</td>
+        <td><input type="text" id="lado" name="lado" /></td>
+      </tr>
+      <tr id="radioTr">
+        <td>Radio</td>
+        <td><input type="text" id="radio" name="radio" /></td>
+      </tr>
+      <tr id="baseTr">
+        <td>Base</td>
+        <td><input type="text" id="base" name="base" /></td>
+      </tr>
+      <tr id="alturaTr">
+        <td>Altura</td>
+        <td><input type="text" id="altura" name="altura" /></td>
+      </tr>
+      <tr id="apotemaTr">
+        <td>Apotema</td>
+        <td><input type="text" id="apotema" name="apotema" /></td>
+      </tr>
+      <tr id="numLadosTr">
+        <td>Número de lados</td>
+        <td><input type="text" id="numLados" name="numLados" /></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
